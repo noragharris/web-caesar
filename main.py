@@ -41,11 +41,14 @@ form = """
 def index():
     return form
 
-# @app.route("/", methods='POST')
-# def encrypt():
-    # store values of requested text in local variable
-    # store value of requested rot in local variable
-    # encrypt text using rotate_string
-    # return encrypted string wrapped in <h1> tags rendered in browser
+@app.route("/", methods=['POST'])
+def encrypt():
+
+    text = request.form['text']
+    rot = int(request.form['rot'])
+   
+    encrypted_text = rotate_string(text, rot)
+
+    return "<h1>" + encrypted_text + "</h1>"
 
 app.run()
